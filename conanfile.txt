@@ -4,5 +4,6 @@ benchmark/1.5.0
 [options]
 
 [generators]
+cmake
 cmake_find_package
 cmake_paths
