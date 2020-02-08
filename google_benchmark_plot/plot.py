@@ -86,9 +86,11 @@ def read_data(args):
 def plot_groups(label_groups, args):
     """Display the processed data"""
     for label, group in label_groups.items():
-        plt.plot(group['input'], group[args.metric], label=label, marker='.')
+        x = group['input']
+        y = [value / size for size, value in zip(x, group[args.metric])]
+        plt.plot(x, y, label=label, marker='.')
     if args.logx:
-        plt.xscale('log')
+        plt.xscale('log', basex=2)
     if args.logy:
         plt.yscale('log')
     plt.xlabel(args.xlabel)
