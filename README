@@ -1,0 +1,32 @@
+## **Tiny CPU Benchmark application**
+
+Main purpose of this application is to show, sizes, and speedup of using cpu caches.
+Special thanks for google benchmarking library developers, which makes it easy to measure.
+
+
+## **My own machine configuration and results**
+
+```
+Laptop Intel i9 2,3 GHz, 8 cores, 16 threads(x2 hyper-threading)
+
+CPU Caches:
+  L1 Data 32K (x8)
+  L1 Instruction 32K (x8)
+  L2 Unified 262K (x8)
+  L3 Unified 16777K (x1)
+```
+
+## **Build**
+
+The recommended way is to use conan package manager.
+
+Firstly, make a build directory and call `conan install <path-to-conanfile.txt>` 
+to install all dependencies(There is only one - google benchmark library).
+Some users might want to check it's a truth,
+it's really easy with call `conan info <path-to-conanfile.txt>`.
+
+Then configure cmake. For example, in your build directory
+call `cmake -G Ninja <path-to-root-CMakeLists.txt> -DCMAKE_BUILD_TYPE=Release`.
+
+Final step is to call `ninja` or yours own generator in build directory
+to build executable and run it with `./cache-benchmark` command.
